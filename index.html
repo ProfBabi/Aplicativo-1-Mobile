@@ -107,18 +107,17 @@
       document.getElementById("hora").innerHTML = "Agora são " + hora.toString().padStart(2,"0") + ":" + minutos + ":" + segundos;
       document.getElementById("data").innerHTML = "📅 " + dataFormatada;
       document.getElementById("diaTipo").innerHTML = tipoDia;
-
-      const fraseAleatoria = frases[Math.floor(Math.random()*frases.length)];
-      document.getElementById("frase").innerHTML = fraseAleatoria;
     }
-
+    function trocarFrases(){
+    if(frases.length>0){
+       const fraseAleatoria = frases[Math.floor(Math.random()*frases.length)];
+      document.getElementById("frase").innerHTML = fraseAleatoria;
+      }
+    }
     trocar();
     setInterval(trocar, 1000);
-    setInterval(() => {
-      if(frases.length>0){
-        document.getElementById("frase").innerHTML = frases[Math.floor(Math.random()*frases.length)];
-      }
-    }, 5000);
+    trocarFrases();
+    setInterval(trocarFrases, 5000);
   </script>
 
   <!-- Registrar Service Worker -->
@@ -131,4 +130,5 @@
   </script>
 </body>
 </html>
+
 
